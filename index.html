@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="gemStore">
+	<head>
+		<meta charset="utf-8">
+		<title>AngularJS</title>
+		<link rel="stylesheet" type="text/css" href-"bootstrap.min.css" />
+		<script type="text/javascript" src="angular.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+	</head>
+	<body>
+		<div ng-controller="StoreController as store">
+		<div ng-hide="!store.product.soldOut">
+			<h1>Product Name: {{store.product.name}}</h1>
+			<h2>Product Price: ${{store.product.price}}</h2>
+			<p>Product Description: {{store.product.description}}</p>
+			<button ng-show="store.product.canPurchase">Add to my Cart</button>
+		</div>
+		</div>
+	Basic Angular.js
+	<p>I am {{4 + 6}}</p>
+	<p>{{"hello" + " world!"}}
+	</body>
+</html>
+
