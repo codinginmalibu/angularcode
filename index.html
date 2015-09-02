@@ -3,23 +3,49 @@
 	<head>
 		<meta charset="utf-8">
 		<title>AngularJS</title>
-		<link rel="stylesheet" type="text/css" href-"bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
 		<script type="text/javascript" src="angular.min.js"></script>
 		<script type="text/javascript" src="app.js"></script>
 	</head>
-	<body>
-		<div ng-controller="StoreController as store">
-			<div ng-repeat="product in store.products">
+	<body ng-controller="StoreController as store">
+		<ul class="list-group">
+			<li class="list-group-item" ng-repeat="product in store.products">
 				<div ng-hide="product.soldOut">
-					<h1>Product Name: {{product.name}}</h1>
-					<h2>Product Price: ${{product.price}}</h2>
-					<p>Product Description: {{product.description}}</p>
-					<button ng-show="product.canPurchase">Add to my Cart</button>
+					<h2>Product Name: <em class="pull-right">{{product.name}}</em></h1>
+					<h3>Product Price: <em class="pull-right">{{product.price | currency}}</em></h2>
+					<section ng-controller="PanelController as panel">
+						<ul class="nav nav-pills">
+							<li ng-class="{ active:panel.isSelected(1) }">
+								<a href ng-click="panel.selectTab(1)">Description</a>
+							</li>
+							<li ng-class="{ active:panel.isSelected(2) }">
+								<a href ng-click="panel.selectTab(2)">Specifications</a>
+							</li>
+							<li ng-class="{ active:panel.isSelected(3) }">
+								<a href ng-click="panel.selectTab(3)">Reviews</a>
+							</li>
+						</ul>
+						{{tab}}	
+						<div class="panel" ng-show="panel.isSelected(1)">
+							<h4>Description</h4>
+							<p>{{product.description}}</p>
+						</div>
+						<div class="panel" ng-show="panel.isSelected(2)">
+							<h4>Specifications</h4>
+							<p>None yet</p>
+						</div>
+						<div class="panel" ng-show="panel.isSelected(3)">
+							<h4>Reviews</h4>
+							<p>None yet</p>
+						</div>
+						<p>Product Description: <em class="pull-right">{{product.description}}</em></p>
+						<button ng-show="product.canPurchase">Add to my Cart</button>
+					</section>
 				</div>
-			</div>
-		</div>
+			</li>
+		</ul>
 	Basic Angular.js
-	<p>I am {{4 + 6}}</p>
+	<p>I am {{2 - 1}}</p>
 	<p>{{"hello" + " world!"}}
 	</body>
 </html>
