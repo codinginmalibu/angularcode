@@ -36,7 +36,30 @@
 						</div>
 						<div class="panel" ng-show="panel.isSelected(3)">
 							<h4>Reviews</h4>
-							<p>None yet</p>
+							<blockquote ng-repeat="review in product.reviews">
+								<b>Stars: {{review.stars[0]}}</b><br>
+								{{review.body}}<br>
+								<cite>by: {{review.author}}</cite>
+							</blockquote>
+
+							<form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)">
+								<blockquote>
+									<b>Stars: {{reviewCtrl.review.stars[0]}}</b><br>
+									{{reviewCtrl.review.body}}<br>
+									<cite>by: {{reviewCtrl.review.author}}</cite>
+								</blockquote>
+								<select ng-model="reviewCtrl.review.stars">
+									<option value="1">1 star</option>
+									<option value="2">2 stars</option>
+									<option value="3">3 stars</option>
+									<option value="4">4 stars</option>
+									<option value="5">5 stars</option>
+								</select>
+								<textarea ng-model="reviewCtrl.review.body"></textarea>
+								<label>by:</label>
+								<input ng-model="reviewCtrl.review.author" type="email" />
+								<input type="submit" value="Submit" />
+							</form>
 						</div>
 						<p>Product Description: <em class="pull-right">{{product.description}}</em></p>
 						<button ng-show="product.canPurchase">Add to my Cart</button>
