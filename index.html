@@ -12,10 +12,7 @@
 		<ul class="list-group">
 			<li class="list-group-item" ng-repeat="product in store.products">
 				<div ng-hide="product.soldOut">
-					<h2>
-						Name: <em class="pull-right">{{product.name}}</em><br>
-						Price: <em class="pull-right">{{product.price | currency}}</em>
-					</h2>
+					<product-title></product-title>
 					<section ng-controller="PanelController as panel">
 						<ul class="nav nav-pills">
 							<li ng-class="{ active:panel.isSelected(1) }">

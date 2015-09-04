@@ -23,6 +23,13 @@
 		this.products = gems;
 	});
 
+	app.directive('productTitle', function(){
+		return {
+			restrict: 'E',
+			templateUrl: "product-price.html",
+		};
+	});
+
 	var gems = [
 		{
 			name: 'Dodecahedron',
