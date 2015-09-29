@@ -116,18 +116,58 @@ var applyAndEmpty = function (input, queue) {
 // alert(applyAndEmpty(start, puzzlers));
 console.log(applyAndEmpty(start, puzzlers));
 
-
+/*
 function mystery(input) {
-  var secret = 5;
   function mystery2(multiplier) {
     multiplier *= input;
-    return secret * multiplier;
+    return 5 * multiplier;
   }
   return mystery2;
 }
 
 var hidden = mystery(4);
 var result = hidden(2);
+*/
 
+function mystery(input) {
+  input += 2; // 5
+  function mystery2(multiplier) {
+    multiplier *= input;
+    return 4 * multiplier;
+  }
+  return mystery2;
+}
+
+function mystery3(param) { // 2
+  function mystery4(bonus) {
+    return param(6) + bonus;
+  }
+  return mystery4;
+}
+
+var hidden = mystery(3);
+var jumble = mystery3(hidden);
+var result = jumble(2);
+
+function warningMaker(obstacle) {
+  return function(number, location) { // set parameters
+    alert("Beware! There have been " + obstacle +
+          " sightings in the Cove today!\n" +
+          number + " have been spotted at the " + location + "!"
+    );
+  };
+}
+
+var killerPenguinAlert = warningMaker("killer penguin");
+var polarBearAlert     = warningMaker("polar bear");
+var icebergAlert       = warningMaker("iceberg");
+var flashBlizzardAlert = warningMaker("flash blizzard");
+var snowYetiAlert      = warningMaker("snow yeti");
+
+icebergAlert(3, "Crystal Cove");
+killerPenguinAlert(6, "Ice Caves");
+snowYetiAlert(1, "Blizzard Beach");
+
+console.log("icebergAlert = " + icebergAlert);
 
 
