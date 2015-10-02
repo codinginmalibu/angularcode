@@ -42,9 +42,11 @@ var superBlinders = [
 
 var lighthouseRock = {
   gateClosed: true,
+  weaponBulbs: superBlinders,
   bulbs: [200, 500, 750],
   capacity: 30,
-  secretPassageTo: "Underwater Outpost"
+  secretPassageTo: "Underwater Outpost",
+  numRangers: 0
 };
 
 // remove bulbs property from lighthouseRock
@@ -56,4 +58,17 @@ lighthouseRock.weaponBulbs = superBlinders;
 // log the correct weaponBulbs array value to the console
 console.log(lighthouseRock.weaponBulbs[2][0]);
 
+
+function addRanger(location, name, skillz, station) {
+  // increment the number of rangers property
+  lighthouseRock.numRangers++;
+
+  // add the ranger<number> property and assign a ranger object
+  lighthouseRock.location["ranger" + lighthouseRock.numRangers] = {name: name, skillz: skillz, station: station};
+}
+
+// call addRanger three times to add the new rangers
+addRanger("1","Nick Walsh", "magnification burn", 2);
+addRanger("2", "Drew Barontini", "uppercut launch", 3);
+addRanger("3", "Christine Wong", "bomb defusing", 1);
 
