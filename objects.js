@@ -40,7 +40,6 @@ var superBlinders = [
   ["Supernova", 12000]
 ];
 
-/*
 var lighthouseRock = {
   gateClosed: true,
   weaponBulbs: superBlinders,
@@ -75,7 +74,6 @@ addRanger(lighthouseRock, "Christine Wong", "bomb defusing", 1);
 
 console.log("lighthouseRock = " + lighthouseRock);
 console.dir(lighthouseRock);
-*/
 
 
 // -------------------------------------------------------------------
