@@ -40,54 +40,45 @@ var superBlinders = [
   ["Supernova", 12000]
 ];
 
-var lighthouseRock = {
-  gateClosed: true,
-  weaponBulbs: superBlinders,
-  bulbs: [200, 500, 750],
-  capacity: 30,
-  secretPassageTo: "Underwater Outpost",
-  numRangers: 0
-};
-
-// remove bulbs property from lighthouseRock
-delete lighthouseRock.bulbs;
-
-// add weaponBulbs property to lighthouseRock
-lighthouseRock.weaponBulbs = superBlinders;
-
-// log the correct weaponBulbs array value to the console
-console.log(lighthouseRock.weaponBulbs[2][0]);
-
-
-function addRanger(location, name, skillz, station) {
-  // increment the number of rangers property
-  lighthouseRock.numRangers++;
-
-  // add the ranger<number> property and assign a ranger object
-  lighthouseRock["ranger" + lighthouseRock.numRangers] = { name: name, skillz: skillz, station: station };
-}
-
-// call addRanger three times to add the new rangers
-addRanger(lighthouseRock,"Nick Walsh", "magnification burn", 2);
-addRanger(lighthouseRock, "Drew Barontini", "uppercut launch", 3);
-addRanger(lighthouseRock, "Christine Wong", "bomb defusing", 1);
-
-console.log("lighthouseRock = " + lighthouseRock);
-console.dir(lighthouseRock);
-
-
 // -------------------------------------------------------------------
 
 var lighthouseRock = {
   gateClosed: true,
   weaponBulbs: superBlinders,
+  bulbs: [200, 500, 750], 
   capacity: 30,
   secretPassageTo: "Underwater Outpost",
-  numRangers: 3,
-  ranger1: {name: "Nick Walsh", skillz: "magnification burn", station: 2},
-  ranger2: {name: "Drew Barontini", skillz: "uppercut launch", station: 3},
-  ranger3: {name: "Christine Wong", skillz: "bomb defusing", station: 1}
+  numRangers: 0,
+  //ranger1: {name: "Nick Walsh", skillz: "magnification burn", station: 2},
+  //ranger2: {name: "Drew Barontini", skillz: "uppercut launch", station: 3},
+  //ranger3: {name: "Christine Wong", skillz: "bomb defusing", station: 1}
+
+  addRanger: function (name, skillz, station) {
+  	// increment the number of rangers property
+	this.numRangers++;
+
+  	// add the ranger<number> property and assign a ranger object
+  	this["ranger" + this.numRangers] = { name: name, skillz: skillz, station: station };
+  },
 };
+
+// remove bulbs property from lighthouseRock
+delete lighthouseRock.bulbs;
+
+// log the correct weaponBulbs array value to the console
+console.log("lighthouseRock.weaponBulbs[2][0] = " + lighthouseRock.weaponBulbs[2][0] + "\n\n");
+console.log("lighthouseRock = " + lighthouseRock + "\n\n");
+console.dir(lighthouseRock);
+
+
+// call addRanger three times to add the new rangers
+lighthouseRock.addRanger("Nick Walsh", "magnification burn", 2);
+lighthouseRock.addRanger("Drew Barontini", "uppercut launch", 3);
+lighthouseRock.addRanger("Christine Wong", "bomb defusing", 1);
+lighthouseRock.addRanger("Jordan Wade", "dual-wield hand crossbow", 4);
+
+
+
 
 function dontPanic(location) {
   var list = "Avast, me hearties!\n" +
@@ -103,13 +94,18 @@ function dontPanic(location) {
   		+ " | ");
   	list += location["ranger" + i]["name"] + ", man the " + location.weaponBulbs[location["ranger" + i]["station"]-1][0] + "!\n";
   }
-
   alert(list);
 }
 
-dontPanic(lighthouseRock);
+// dontPanic(lighthouseRock);
 
+lighthouseRock.addBulb = function(name, wattage) {
+	this.weaponBulbs.push([name, wattage]);
+}
 
-
+// Add bulbs
+lighthouseRock.addBulb("Blasterbright", 5000);
+lighthouseRock.addBulb("Sight Slayer", 1800);
+lighthouseRock.addBulb("Burner of Souls", 7500);
 
 
