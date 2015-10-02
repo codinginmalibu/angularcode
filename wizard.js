@@ -165,7 +165,9 @@ function makeTargetAssigner(sharks, targets) {
   return function (shark) {
     for (var i = 0; i < sharks.length; i++) {
       if (sharks[i] == shark) {
-        alert("What up, " + sharks[i] + "!\nThere've been " + targets[i] + " sightings in our 'hood!\nTime for a swim-by lasering, homie!");
+        // alert("What up, " + sharks[i] + "!\nThere've been " + targets[i] + " sightings in our 'hood!\nTime for a swim-by lasering, homie!");
+        console.log("What up, " + sharks[i] + "!\nThere've been " + targets[i] + " sightings in our 'hood!\nTime for a swim-by lasering, homie!");
+      }
       }
     }
   };
