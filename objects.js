@@ -40,6 +40,7 @@ var superBlinders = [
   ["Supernova", 12000]
 ];
 
+/*
 var lighthouseRock = {
   gateClosed: true,
   weaponBulbs: superBlinders,
@@ -64,11 +65,53 @@ function addRanger(location, name, skillz, station) {
   lighthouseRock.numRangers++;
 
   // add the ranger<number> property and assign a ranger object
-  lighthouseRock.location["ranger" + lighthouseRock.numRangers] = {name: name, skillz: skillz, station: station};
+  lighthouseRock["ranger" + lighthouseRock.numRangers] = { name: name, skillz: skillz, station: station };
 }
 
 // call addRanger three times to add the new rangers
-addRanger("1","Nick Walsh", "magnification burn", 2);
-addRanger("2", "Drew Barontini", "uppercut launch", 3);
-addRanger("3", "Christine Wong", "bomb defusing", 1);
+addRanger(lighthouseRock,"Nick Walsh", "magnification burn", 2);
+addRanger(lighthouseRock, "Drew Barontini", "uppercut launch", 3);
+addRanger(lighthouseRock, "Christine Wong", "bomb defusing", 1);
+
+console.log("lighthouseRock = " + lighthouseRock);
+console.dir(lighthouseRock);
+*/
+
+
+// -------------------------------------------------------------------
+
+var lighthouseRock = {
+  gateClosed: true,
+  weaponBulbs: superBlinders,
+  capacity: 30,
+  secretPassageTo: "Underwater Outpost",
+  numRangers: 3,
+  ranger1: {name: "Nick Walsh", skillz: "magnification burn", station: 2},
+  ranger2: {name: "Drew Barontini", skillz: "uppercut launch", station: 3},
+  ranger3: {name: "Christine Wong", skillz: "bomb defusing", station: 1}
+};
+
+function dontPanic(location) {
+  var list = "Avast, me hearties!\n" +
+             "There be Pirates nearby! Stations!\n";
+
+  // loop through the rangers and append to list
+  for (var i = 1; i <= location.numRangers; i++) {
+  	console.log("1) location[ranger + i] = " + location["ranger" + i] + " | ");
+  	console.log("2) i-1 = " + (i-1) + " | location.weaponBulbs[i-1] = " + location.weaponBulbs[i-1] + " | location.weaponBulbs[i-1][0] = " + location.weaponBulbs[i-1][0] );
+  	console.log("3) location[ranger + i][station] = " + location["ranger" + i]["station"]  
+  		+ " | location.weaponBulbs[location[ranger + i][station]-1] = " + location.weaponBulbs[location["ranger" + i]["station"]-1] 
+  		+ " | location.weaponBulbs[location[ranger + i][station]-1][0] = " + location.weaponBulbs[location["ranger" + i]["station"]-1][0]
+  		+ " | ");
+  	list += location["ranger" + i]["name"] + ", man the " + location.weaponBulbs[location["ranger" + i]["station"]-1][0] + "!\n";
+  }
+
+  alert(list);
+}
+
+dontPanic(lighthouseRock);
+
+
+
+
 
