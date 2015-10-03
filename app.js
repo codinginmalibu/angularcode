@@ -1,5 +1,5 @@
 (function(){
-	var app = angular.module('gemStore', []);
+	var app = angular.module('gemStore', ['store-products']);
 
 	app.controller('PanelController', function(){
 		this.tab = 1;
@@ -19,15 +19,10 @@
 		};
 	});
 
+
+
 	app.controller('StoreController', function(){
 		this.products = gems;
-	});
-
-	app.directive('productTitle', function(){
-		return {
-			restrict: 'E',
-			templateUrl: "product-price.html",
-		};
 	});
 
 	var gems = [
