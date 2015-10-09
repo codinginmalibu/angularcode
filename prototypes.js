@@ -1,20 +1,22 @@
-var rockSpearguns = {
-  Sharpshooter: {barbs: 2, weight: 10, heft: "overhand"},
-  Pokepistol: {barbs: 4, weight: 8, heft: "shoulder"},
-  Javelinjet: {barbs: 4, weight: 12, heft: "waist"},
-  Firefork: {barbs: 6, weight: 8, heft: "overhand"},
-  "The Impaler": {barbs: 1, weight: 30, heft: "chest"},
-};
+var canyonCows = [
+  {name: "Bessie", type: "cow", hadCalf: "Burt"},
+  {name: "Donald", type: "bull", hadCalf: null},
+  {name: "Esther", type: "calf", hadCalf: null},
+  {name: "Burt", type: "calf", hadCalf: null},
+  {name: "Sarah", type: "cow", hadCalf: "Esther"},
+  {name: "Samson", type: "bull", hadCalf: null},
+  {name: "Delilah", type: "cow", hadCalf: null}
+];
 
-// convert listGuns function
-rockSpearguns["listGuns"] = function() {
-	for (var property in this) {
-    if (this[property]["heft"] != undefined) {
-		  console.log("Behold! " + property + ", with " + this[property]["heft"] + " heft!");
+Array.prototype.countCattle = function(kind) {
+	var numKind = 0;
+	for (var i = 0; i < this.length; i++) {
+		if (this[i].type == kind) {
+			numKind++;
 		}
 	}
-};
+	return numKind;
+}
 
-
-// call listGuns and pass in rockSpearguns
-rockSpearguns["listGuns"]();
+console.log("Num Cows = " + canyonCows.countCattle("cow"));
+console.log("Num Bulls = " + canyonCows.countCattle("bull"));
