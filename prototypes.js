@@ -22,7 +22,15 @@ var forestCows = [
   {name: "Galadriel", type: "cow", hadCalf: null},
   {name: "Eowyn", type: "cow", hadCalf: "Legolas"}
 ];
-
+var badlandsCows = [
+  {name: "Voldemort", type: "bull", hadCalf: null},
+  {name: "Maleficent", type: "cow", hadCalf: null},
+  {name: "Ursula", type: "cow", hadCalf: "Draco"},
+  {name: "Draco", type: "calf", hadCalf: null},
+  {name: "Joker", type: "bull", hadCalf: null},
+  {name: "Chucky", type: "calf", hadCalf: null},
+  {name: "Samara", type: "cow", hadCalf: "Chucky"}
+];
 
 Array.prototype.countCattle = function(kind) {
 	var numKind = 0;
@@ -58,3 +66,13 @@ Array.prototype.countForBreeding = function() {
 };
 
 console.log("Num to Breed = " + valleyCows.countForBreeding() );
+
+// set up your numPriorityCows variable
+var numPriorityCows = canyonCows.countForBreeding() + valleyCows.countForBreeding() + forestCows.countForBreeding() + badlandsCows.countForBreeding();
+
+// alert the correct message with the total
+alert("Herd-merger has indicated " + numPriorityCows + " cows of top breeding priority.")
+
+
+
+
