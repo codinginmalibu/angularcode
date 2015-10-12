@@ -54,6 +54,12 @@ post9.sendRopeTo(post10);
 post10.sendRopeTo(post8);
 post10.sendRopeTo(post9);
 
+post9.numBirds = 0;
+post10.weathervane = "N";
+post8.lightsOn = false;
+post10.lightsOn = false;
+
+
 for (var i = 0; i < genericPost.postArray.length; i++) {
   if( genericPost.postArray[i].y % 2 === 0 ) {
     genericPost.postArray[i].numBirds = 0;
@@ -64,4 +70,15 @@ for (var i = 0; i < genericPost.postArray.length; i++) {
   if( genericPost.postArray[i].postNum % 2 === 0 ) {
     genericPost.postArray[i].lightsOn = false;
   }
+}
+
+function Fencepost (x, y, postNum) {
+  this.x = x;
+  this.y = y;
+  this.postNum = postNum;
+  this.connectionsTo: undefined;
+  this.sendRopeTo = function(connectedPost) {
+    this.connectionsTo.push(connectedPost);
+  }
+
 }
