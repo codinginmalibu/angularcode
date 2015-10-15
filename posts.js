@@ -114,3 +114,12 @@ post19.sendRopeTo(post18);
 Fencepost.prototype.valueOf = function() {
   return Math.sqrt(this.x*this.x + this.y*this.y);
 };
+
+// override the toString method
+Fencepost.prototype.toString = function() {
+  var postList = "";
+  for (var i = 0; i < this.connectionsTo.length; i++) {
+    postList = postList + this.connectionsTo[i] + "\n";
+  };
+  return "Fence post #" + this.postNum + ":\nConnected to posts:\n" + postList + "Distance from ranch: " + this.valueOf() + " yards";
+};
